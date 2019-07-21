@@ -54,7 +54,7 @@ select * from stu
 
 select  field1, field2... from 表名  查询表中的所有数据
 
-  where 可以使用条件来筛选查询出的结果![01](..\img\01.jpg)
+  where 可以使用条件来筛选查询出的结果![01](\img\01.jpg)
 
 ```sql
 -- select * from stu where 你的条件
