@@ -1,0 +1,53 @@
+## Node.js原理
+
+> 基于Chrome V8 引擎（JavaScript解析器）的JavaScript运行环境。它使用了一个事件驱动、非阻塞式I/O的模型。
+>
+> node 使用事件驱动、非阻塞I/O模型而得以轻量和高效，非常适合在分布式设备商运行数据密集型的实时应用。
+
+浏览器内核 = 渲染引擎 + js引擎（解释、执行js）
+
+### node 组织结构
+
+1. **node standard library** （JavaScript标准库，使用node时可以直接调用的api）
+
+   http、net、stream、fs、events、buffer...
+
+2. **node standard library** （中间层，js与底层沟通的桥梁，实现一般在.cc文件里）
+3. 底层 （由C、C++ 编写的）
+   - V8：JavaScript VM（js运行环境）
+   - libuv ：thread pool、event poop、async i/o（为nodejs提供了一个跨平台线程池、线程池、if i/o等一些事件，也就是说一些事件循环都在这部分进行）
+   - C-ares：async dns（提供了异步处理dns的能力）
+   - http-parser、OpenSSL、zlib、etc...（提供了包括http解析、SSL、数据压缩等一些其他的能力）
+
+**开发平台**
+
+- 有对应的编程语言
+- 要有语言的运行时
+- 必须要有实现特定功能的API
+
+**node.js 特点**
+
+- 事件驱动
+- 非阻塞I/O模型
+- 单线程
+- 拥有世界上最大的开源生态系统（NPM）
+
+> node.js 开发的网站应用是不需要**web容器**的，因为他本身就是一个web容器
+
+**REPL模式**
+
+**nvm**
+
+node版本管理工具（node.js的安装目录是一个快捷方式，nvm的原理就是更改node.js安装目录的快捷方式的幕僚地址
+
+- nvm
+
+
+
+## 基础API
+
+
+
+
+
+## 搭建静态服务器
