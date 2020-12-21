@@ -10,79 +10,28 @@ tags:
 
 
 
-## style
+[styled-components](https://styled-components.com/docs)
 
-### `styled-components` 
+[react-transition-group](https://reactcommunity.org/react-transition-group/)
 
->  使组件内style只对自己生效
+`standard.js` 规范
 
-1. `yarn add styled-components` 
+```js
+1. npm install standard --save-dev
+2. npm install snazzy --save-dev
+3. 配置 package.json，添加一条名为 lint 的 npm script 
+   "script": {"lint": "standard --verbose|snazzy"}
+4. 使用编辑器插件，实时检查代码规范
+5.git pre-commit 钩子，在每次 commit 之前检查代码规范
+```
 
-2. 将.css文件名修改为.js文件名，还是直接 `import './... .js'` 引入
+`bem css` 规范
 
-   ```javascript
-   // style.js
-   import { injectGlobal } from 'styled-components
-   import styled from 'styled-components
-   import logoPic from '../../statics/logo.png
-   
-   injectGlobal`
-   	body {
-   		margin: 0;
-   		padding: 0;
-   		...
-   	}
-   `
-   export const HeaderWrapper = styled.div`
-   	height: 56px;
-   	background: red;
-   `
-   export const Logo = styled.a.attrs({href: '/'})`
-   	display: inline-block;
-   	position: absolute;
-   	top: 0
-   	left: 0;
-   	background: url(${logoPic});
-   `
-   export const Nav = styled.div`
-   	width: 960px'
-   	.iconfont { // 里面的具有onfont类名的样式设置
-   		color: red;
-   	}
-   `
-   export const NavItem = styled.div`
-   	line-height: 24px;
-   	&.left { // 个性样式
-   		float: left;
-   	}
-   	&.right
-   		float: right
-   	}
-   	&.active
-   		color: #eee;
-   	}
-   `
-   ```
+```js
+.person{}
+.person__hand{} // hand为子元素或子组件
+.person--female{} // person的某一种状态
+.person--female__hand{} // 在female状态下的子元素
+.person__hand--left{} // 子组件的某一状态
+```
 
-   ```js
-   // header.js
-   import React, { Component } from 'react'
-   import { HeaderWrapper, Logo, Nav, NavItem } from './styled'
-   
-   class Header extends Component {
-       render() {
-           <HeaderWrapper>
-               <Logo href='/'>
-               <Nav>
-                   <NavItem className="left active">首页</NavItem>
-                   <NavItem className="right active">登录</NavItem>
-          		</Nav>
-           
-           </HeaderWrapper>
-       }
-   }
-   
-   export default Header
-   ```
-
-   
