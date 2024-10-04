@@ -44,6 +44,8 @@
 
     .carousel img {
       position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -59,6 +61,28 @@
       font-size: 1.5em;
       margin-top: 20px;
       animation: slideIn 1.5s ease-out;
+    }
+
+    .audio-container,
+    .effect-container {
+      margin-top: 20px;
+    }
+
+    .play-button,
+    .effect-button {
+      background-color: #ff1493;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      font-size: 1.2em;
+      cursor: pointer;
+      border-radius: 25px;
+      transition: background-color 0.3s ease;
+    }
+
+    .play-button:hover,
+    .effect-button:hover {
+      background-color: #ff69b4;
     }
 
     @keyframes glow {
@@ -100,6 +124,27 @@
         transform: rotate(360deg);
       }
     }
+
+    /* Cake and Confetti Drop Animation */
+    .cake {
+      position: absolute;
+      top: -100px;
+      width: 50px;
+      height: 50px;
+      background-image: url('cake.png'); /* Add your cake icon here */
+      background-size: cover;
+      animation: drop 4s linear infinite;
+    }
+
+    @keyframes drop {
+      0% {
+        transform: translateY(-100px);
+      }
+      100% {
+        transform: translateY(120vh);
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -107,12 +152,29 @@
   <div class="container">
     <h1>Happy Birthday!</h1>
     <div class="carousel">
-      <img src="https://cdn.jsdelivr.net/gh/wangchiech/image_store/img/202307171425736.png" alt="Photo 1" class="active">
+      <img src="https://cdn.jsdelivr.net/gh/wangchiech/image_store/img/202410041705779.png" alt="Photo 1" class="active">
+      <img src="photo1.jpg" alt="Photo 1" class="active">
       <img src="photo2.jpg" alt="Photo 2">
       <img src="photo3.jpg" alt="Photo 3">
       <img src="photo4.jpg" alt="Photo 4">
     </div>
     <p>Wishing you all the joy and happiness in the world! 🎉🎂</p>
+
+    <!-- Play Audio Button -->
+    <div class="audio-container">
+      <button class="play-button" onclick="playAudio()">Play Birthday Song 🎶</button>
+    </div>
+
+    <!-- Special Effect Button -->
+    <div class="effect-container">
+      <button class="effect-button" onclick="dropCakes()">Saa Cake 🎂!</button>
+    </div>
+
+    <!-- Hidden Audio Element -->
+    <audio id="birthdayAudio">
+      <source src="happy-birthday.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
   </div>
 
   <script>
@@ -128,6 +190,29 @@
     }
 
     setInterval(showNextImage, 3000); // Change image every 3 seconds
+
+    // Function to play the birthday song
+    function playAudio() {
+      const audio = document.getElementById('birthdayAudio');
+      audio.play();
+    }
+
+    // Function to drop cakes from the top of the screen
+    function dropCakes() {
+      const container = document.querySelector('.container');
+      for (let i = 0; i < 15; i++) { // Drop 15 cake images
+        const cake = document.createElement('div');
+        cake.classList.add('cake');
+        cake.style.left = Math.random() * 100 + 'vw'; // Random horizontal position
+        cake.style.animationDuration = Math.random() * 2 + 3 + 's'; // Random drop duration
+        container.appendChild(cake);
+
+        // Remove the cake after animation to prevent clutter
+        setTimeout(() => {
+          cake.remove();
+        }, 5000);
+      }
+    }
   </script>
 
 </body>
