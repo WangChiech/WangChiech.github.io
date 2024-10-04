@@ -70,7 +70,6 @@
 
     .play-button,
     .effect-button {
-      background-color: #ff1493;
       border: none;
       color: white;
       padding: 10px 20px;
@@ -78,11 +77,7 @@
       cursor: pointer;
       border-radius: 25px;
       transition: background-color 0.3s ease;
-    }
-
-    .play-button:hover,
-    .effect-button:hover {
-      background-color: #ff69b4;
+      background: transparent;
     }
 
     @keyframes glow {
@@ -153,21 +148,21 @@
     <h1>Happy Birthday!</h1>
     <div class="carousel">
       <img src="https://cdn.jsdelivr.net/gh/wangchiech/image_store/img/202410041705779.png" alt="Photo 1" class="active">
-      <img src="photo1.jpg" alt="Photo 1" class="active">
-      <img src="photo2.jpg" alt="Photo 2">
-      <img src="photo3.jpg" alt="Photo 3">
-      <img src="photo4.jpg" alt="Photo 4">
+      <img src="https://cdn.jsdelivr.net/gh/wangchiech/image_store/img/202410041717320.png" alt="Photo 2" class="active">
+      <img src="https://cdn.jsdelivr.net/gh/wangchiech/image_store/img/202410041721126.png" alt="Photo 4">
+      <img src="https://cdn.jsdelivr.net/gh/wangchiech/image_store/img/202410041724949.png" alt="Photo 5">
+      <img src="https://cdn.jsdelivr.net/gh/wangchiech/image_store/img/202410041727049.png" alt="Photo 6">
     </div>
     <p>Wishing you all the joy and happiness in the world! 🎉🎂</p>
 
     <!-- Play Audio Button -->
     <div class="audio-container">
-      <button class="play-button" onclick="playAudio()">Play Birthday Song 🎶</button>
+      <button class="play-button" onclick="playAudio()">🎶</button>
     </div>
 
     <!-- Special Effect Button -->
     <div class="effect-container">
-      <button class="effect-button" onclick="dropCakes()">Saa Cake 🎂!</button>
+      <button class="effect-button" onclick="dropCakes()">🎂</button>
     </div>
 
     <!-- Hidden Audio Element -->
@@ -205,6 +200,7 @@
         cake.classList.add('cake');
         cake.style.left = Math.random() * 100 + 'vw'; // Random horizontal position
         cake.style.animationDuration = Math.random() * 2 + 3 + 's'; // Random drop duration
+        cake.innerText = '🎂'
         container.appendChild(cake);
 
         // Remove the cake after animation to prevent clutter
